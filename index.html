@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TreeFind</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="arbol.png" type="image/png">
+  </head>
+  <body>
+    <!-- Pantalla de Búsqueda -->
+    <div id="search-screen" class="screen active">
+      <img src="arbol.png" alt="Logo del buscador" class="logo" />
+      <h1>Buscador con Árbol Binario</h1>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Ingrese el valor a buscar..."
+      />
+      <div class="buttons">
+        <button onclick="startSearch()">Buscar</button>
+        <button onclick="showTreeModal()">Ver Árbol</button>
+      </div>
+    </div>
+
+    <!-- Pantalla de Carga -->
+    <div id="loading-screen" class="screen">
+      <h1>Buscando...</h1>
+      <p id="loading-text">0%</p>
+    </div>
+
+    <!-- Pantalla de Resultados -->
+    <div id="results-screen" class="screen">
+      <h1>Resultados de la Búsqueda</h1>
+      <div class="search-result">
+        <h2>Resultado de la Búsqueda:</h2>
+        <p id="searchResult"></p>
+      </div>
+      <div class="traversal">
+        <h2>Recorridos del Árbol:</h2>
+        <div class="buttons">
+          <button onclick="displayInOrder()">Inorden</button>
+          <button onclick="displayPreOrder()">Preorden</button>
+          <button onclick="displayPostOrder()">Postorden</button>
+        </div>
+        <p id="traversalResult"></p>
+      </div>
+      <button onclick="goBack()" class="back-button">
+        Regresar a la búsqueda
+      </button>
+    </div>
+
+    <!-- Modal para visualizar y editar el árbol -->
+    <div id="tree-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" onclick="closeTreeModal()">&times;</span>
+        <h2>Edite los Valores del Árbol</h2>
+        <div id="tree-edit-fields">
+          <input type="number" placeholder="Raíz (ej. 50)" id="node-root" />
+          <input
+            type="number"
+            placeholder="Izquierda de raíz (ej. 30)"
+            id="node-left"
+          />
+          <input
+            type="number"
+            placeholder="Derecha de raíz (ej. 70)"
+            id="node-right"
+          />
+          <input
+            type="number"
+            placeholder="Izquierda de izquierda (ej. 20)"
+            id="node-left-left"
+          />
+          <input
+            type="number"
+            placeholder="Derecha de izquierda (ej. 40)"
+            id="node-left-right"
+          />
+          <input
+            type="number"
+            placeholder="Izquierda de derecha (ej. 60)"
+            id="node-right-left"
+          />
+          <input
+            type="number"
+            placeholder="Derecha de derecha (ej. 80)"
+            id="node-right-right"
+          />
+        </div>
+        <button onclick="saveTree()" class="save-button">Guardar Árbol</button>
+        <p id="error-message" class="error-message"></p>
+        <canvas id="treeCanvas" width="600" height="400"></canvas>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
